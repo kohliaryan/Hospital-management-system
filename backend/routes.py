@@ -45,3 +45,17 @@ def add_doctor():
     db.session.add_all([user, doctor])
     db.session.commit()
     return jsonify({"msg": "Doctor added successfully!"}), 201
+
+@app.get("/api/doctors")
+def doctors():
+    doctors = []
+    for doctor in DoctorProfile.query.all():
+        d = {}
+        d["name"] = doctor.name
+        d["description"] = doctor.description
+        d["specializations"] = []
+        for s in doctor.specializations:
+            d["specializations"].append(s.name)
+        doctors.append(d)
+    return doctors
+

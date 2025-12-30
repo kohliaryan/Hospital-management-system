@@ -1,4 +1,4 @@
-from models import Role, User, db
+from models import Role, Specialization, User, db
 from flask_security.utils import hash_password
 roles = ["Admin", "Doctor", "Patient"]
 basic_users = [
@@ -18,6 +18,15 @@ basic_users = [
         "role": "Doctor"   
     }
 ]
+
+specializations = [
+    "General Medicine",
+    "Cardiology",
+    "Orthopedics",
+    "Gynecology",
+    "Pediatrics"
+]
+
 def create_initial_data():
     # Create roles
     for name in roles:
@@ -40,4 +49,11 @@ def create_initial_data():
 
         db.session.add(user)
 
+    db.session.commit()
+
+    # Create specializations
+    for s in specializations:
+        if not Specialization.query.filter_by(name=s).first():
+            specialization = Specialization(name=s)
+            db.session.add(specialization)
     db.session.commit()

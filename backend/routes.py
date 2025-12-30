@@ -10,11 +10,11 @@ def hello():
 
 @app.post("/api/register")
 def register():
-    data = request.json
+    data = request.get_json()
     try:
         RegisterSchema().load(data=data)
     except ValidationError as err:
-        return jsonify(err.messages)
+        return jsonify(err.messages), 400
     
     user = User.query.filter_by(email=data["email"]).first()
     if user:

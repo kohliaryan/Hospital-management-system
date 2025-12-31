@@ -1,9 +1,10 @@
+from datetime import datetime
 from flask import current_app as app, jsonify, request
 from marshmallow import ValidationError
 from flask_security.utils import hash_password
 from flask_security import roles_required, roles_accepted
-from schema import AddDoctor, RegisterSchema
-from models import DoctorProfile, Role, Specialization, User, db
+from schema import AddDoctorSchema, RegisterSchema
+from models import DoctorAvailability, DoctorProfile, Role, Specialization, User, db
 
 @app.get('/')
 def hello():
@@ -33,15 +34,22 @@ def register():
 def add_doctor():
     data = request.get_json()
     try:
-        AddDoctor().load(data=data)
+        AddDoctorSchema().load(data=data)
     except ValidationError as err:
         return jsonify(err.messages), 400
-    s = Specialization.query.filter_by(name=data["specialization"]).first()
-    if not s:
-        return jsonify({"msg": "No such specialization exsists!"}), 404
+
     user = User(email=data["email"], password=hash_password(data["password"]))
     doctor = DoctorProfile(name=data["name"], description=data.get("description", ""), user=user)
-    doctor.specializations.append(s)
+
+    for s in data.get("specializations"):
+        doctor.specializations.append(Specialization.query.filter_by(name=s).first())
+
+    for a in data["availabilities"]:
+        s_time = datetime.strptime(a["start_time"], "%H:%M").time()
+        e_time = datetime.strptime(a["end_time"], "%H:%M").time()
+        availability = DoctorAvailability(doctor=doctor, day_of_week=a["day_of_week"], start_time=s_time, end_time=e_time)
+        doctor.availabilities.append(availability)
+
     db.session.add_all([user, doctor])
     db.session.commit()
     return jsonify({"msg": "Doctor added successfully!"}), 201

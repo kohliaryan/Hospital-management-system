@@ -1,4 +1,4 @@
-from models import DoctorAvailability, DoctorProfile, Role, Specialization, User, db
+from models import DoctorAvailability, DoctorProfile, PatientProfile, Role, Specialization, User, db
 from flask_security.utils import hash_password
 from datetime import datetime
 roles = ["Admin", "Doctor", "Patient"]
@@ -635,6 +635,219 @@ doctors = [
     }
 ]
 
+patients = [
+    {
+        "name": "Parth Garg",
+        "gender": "male",
+        "email": "parth.garg@test.com",
+        "age": 35,
+        "password": "password"
+    },
+    {
+        "name": "Aarav Sharma",
+        "gender": "male",
+        "email": "aarav.sharma@test.com",
+        "age": 28,
+        "password": "password"
+    },
+    {
+        "name": "Diya Patel",
+        "gender": "female",
+        "email": "diya.patel@test.com",
+        "age": 42,
+        "password": "password"
+    },
+    {
+        "name": "Vihaan Singh",
+        "gender": "male",
+        "email": "vihaan.singh@test.com",
+        "age": 8,
+        "password": "password"
+    },
+    {
+        "name": "Ananya Roy",
+        "gender": "female",
+        "email": "ananya.roy@test.com",
+        "age": 25,
+        "password": "password"
+    },
+    {
+        "name": "Ishaan Gupta",
+        "gender": "male",
+        "email": "ishaan.gupta@test.com",
+        "age": 50,
+        "password": "password"
+    },
+    {
+        "name": "Saanvi Kumar",
+        "gender": "female",
+        "email": "saanvi.kumar@test.com",
+        "age": 65,
+        "password": "password"
+    },
+    {
+        "name": "Reyansh Malhotra",
+        "gender": "male",
+        "email": "reyansh.malhotra@test.com",
+        "age": 32,
+        "password": "password"
+    },
+    {
+        "name": "Zara Khan",
+        "gender": "female",
+        "email": "zara.khan@test.com",
+        "age": 19,
+        "password": "password"
+    },
+    {
+        "name": "Kabir Joshi",
+        "gender": "male",
+        "email": "kabir.joshi@test.com",
+        "age": 45,
+        "password": "password"
+    },
+    {
+        "name": "Myra Singh",
+        "gender": "female",
+        "email": "myra.singh@test.com",
+        "age": 5,
+        "password": "password"
+    },
+    {
+        "name": "Arjun Verma",
+        "gender": "male",
+        "email": "arjun.verma@test.com",
+        "age": 29,
+        "password": "password"
+    },
+    {
+        "name": "Priya Reddy",
+        "gender": "female",
+        "email": "priya.reddy@test.com",
+        "age": 38,
+        "password": "password"
+    },
+    {
+        "name": "Vivaan Mehta",
+        "gender": "male",
+        "email": "vivaan.mehta@test.com",
+        "age": 12,
+        "password": "password"
+    },
+    {
+        "name": "Aadhya Nair",
+        "gender": "female",
+        "email": "aadhya.nair@test.com",
+        "age": 55,
+        "password": "password"
+    },
+    {
+        "name": "Mohammed Ali",
+        "gender": "male",
+        "email": "mohammed.ali@test.com",
+        "age": 40,
+        "password": "password"
+    },
+    {
+        "name": "Riya Kapoor",
+        "gender": "female",
+        "email": "riya.kapoor@test.com",
+        "age": 27,
+        "password": "password"
+    },
+    {
+        "name": "Advait Chopra",
+        "gender": "male",
+        "email": "advait.chopra@test.com",
+        "age": 70,
+        "password": "password"
+    },
+    {
+        "name": "Kiara Agarwal",
+        "gender": "female",
+        "email": "kiara.agarwal@test.com",
+        "age": 31,
+        "password": "password"
+    },
+    {
+        "name": "Dhruv Saxena",
+        "gender": "male",
+        "email": "dhruv.saxena@test.com",
+        "age": 22,
+        "password": "password"
+    },
+    {
+        "name": "Fatima Khan",
+        "gender": "female",
+        "email": "fatima.khan@test.com",
+        "age": 48,
+        "password": "password"
+    },
+    {
+        "name": "Aryan Mishra",
+        "gender": "male",
+        "email": "aryan.mishra@test.com",
+        "age": 36,
+        "password": "password"
+    },
+    {
+        "name": "Siya Kaur",
+        "gender": "female",
+        "email": "siya.kaur@test.com",
+        "age": 60,
+        "password": "password"
+    },
+    {
+        "name": "Ayaan Bhat",
+        "gender": "male",
+        "email": "ayaan.bhat@test.com",
+        "age": 9,
+        "password": "password"
+    },
+    {
+        "name": "Neha Das",
+        "gender": "female",
+        "email": "neha.das@test.com",
+        "age": 33,
+        "password": "password"
+    },
+    {
+        "name": "Rohan Yadav",
+        "gender": "male",
+        "email": "rohan.yadav@test.com",
+        "age": 26,
+        "password": "password"
+    },
+    {
+        "name": "Isha Jain",
+        "gender": "female",
+        "email": "isha.jain@test.com",
+        "age": 24,
+        "password": "password"
+    },
+    {
+        "name": "Krishna Iyer",
+        "gender": "male",
+        "email": "krishna.iyer@test.com",
+        "age": 52,
+        "password": "password"
+    },
+    {
+        "name": "Meera Rao",
+        "gender": "female",
+        "email": "meera.rao@test.com",
+        "age": 29,
+        "password": "password"
+    },
+    {
+        "name": "Rahul Choudhury",
+        "gender": "male",
+        "email": "rahul.choudhury@test.com",
+        "age": 41,
+        "password": "password"
+    }
+]
+
 def create_initial_data():
     # Create roles
     for name in roles:
@@ -682,4 +895,11 @@ def create_initial_data():
             availability = DoctorAvailability(doctor=doctor, day_of_week=a["day_of_week"], start_time=s_time, end_time=e_time)
             doctor.availabilities.append(availability)
         db.session.add_all([user, doctor])
+    
+    for p in patients:
+        if User.query.filter_by(email=p["email"]).first():
+            continue
+        p_user = User(email=p["email"], password=hash_password(p["password"]))
+        patient = PatientProfile(name=p["name"], gender=p["gender"], age=p["age"], user=p_user)
+        db.session.add_all([p_user, patient])
     db.session.commit()

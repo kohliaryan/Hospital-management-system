@@ -4,7 +4,7 @@ from marshmallow import ValidationError
 from flask_security.utils import hash_password
 from flask_security import roles_required, roles_accepted
 from schema import AddDoctorSchema, RegisterSchema
-from models import DoctorAvailability, DoctorProfile, Role, Specialization, User, db
+from models import DoctorAvailability, DoctorProfile, PatientProfile, Role, Specialization, User, db
 
 @app.get('/')
 def hello():
@@ -67,3 +67,13 @@ def doctors():
         doctors.append(d)
     return doctors
 
+@app.get("/api/patients")
+def patients():
+    patients = []
+    for patient in PatientProfile.query.all():
+        p = {}
+        p["name"] = patient.name
+        p["age"] = patient.age
+        p["gender"] = patient.gender
+        patients.append(p)
+    return patients

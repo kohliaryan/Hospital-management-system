@@ -46,6 +46,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD in Internal Medicine. 5 years experience. Focuses on holistic family health and preventive care.",
         "role": "Doctor",
+        "consultation_price": 800,
         "specializations": ["General Medicine", "Pediatrics"],
         # [SPLIT SHIFT]: Mon, Wed, Fri
         "availabilities": [
@@ -65,6 +66,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD in General Medicine. Senior Consultant with 15 years experience in diabetes and hypertension management.",
         "role": "Doctor",
+        "consultation_price": 1200,
         "specializations": ["General Medicine", "Endocrinology"],
         # [SPLIT SHIFT]: Mon, Wed
         "availabilities": [
@@ -81,6 +83,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD. Specialist in infectious diseases, viral fevers, and adult immunization.",
         "role": "Doctor",
+        "consultation_price": 700,
         "specializations": ["General Medicine"],
         "availabilities": [
             {"day_of_week": "Tuesday", "start_time": "09:00", "end_time": "15:00"},
@@ -94,6 +97,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DNB Family Medicine. Expert in geriatric care and lifestyle disease management.",
         "role": "Doctor",
+        "consultation_price": 600,
         "specializations": ["General Medicine"],
         "availabilities": [
             {"day_of_week": "Monday", "start_time": "16:00", "end_time": "21:00"},
@@ -107,6 +111,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD. Focuses on respiratory infections and seasonal allergies.",
         "role": "Doctor",
+        "consultation_price": 700,
         "specializations": ["General Medicine", "Pulmonology"],
         # [SPLIT SHIFT]: Sat
         "availabilities": [
@@ -123,6 +128,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DM Cardiology. Interventional cardiologist specializing in angiography and angioplasty.",
         "role": "Doctor",
+        "consultation_price": 1500,
         "specializations": ["Cardiology"],
         # [SPLIT SHIFT]: Mon, Fri
         "availabilities": [
@@ -139,6 +145,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DNB Cardiology. Specialist in non-invasive cardiology, echocardiography, and preventive heart care.",
         "role": "Doctor",
+        "consultation_price": 1000,
         "specializations": ["Cardiology"],
         "availabilities": [
             {"day_of_week": "Tuesday", "start_time": "14:00", "end_time": "19:00"},
@@ -152,6 +159,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DM Cardiology. 20 years experience in heart failure management and pacemaker implantation.",
         "role": "Doctor",
+        "consultation_price": 2000,
         "specializations": ["Cardiology"],
         "availabilities": [
             {"day_of_week": "Monday", "start_time": "11:00", "end_time": "16:00"},
@@ -166,6 +174,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD. Pediatric cardiologist focusing on congenital heart defects.",
         "role": "Doctor",
+        "consultation_price": 1200,
         "specializations": ["Cardiology", "Pediatrics"],
         "availabilities": [
             {"day_of_week": "Wednesday", "start_time": "08:00", "end_time": "12:00"},
@@ -180,6 +189,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MS Orthopedics. Sports medicine expert and arthroscopy surgeon.",
         "role": "Doctor",
+        "consultation_price": 1200,
         "specializations": ["Orthopedics"],
         # [SPLIT SHIFT]: Tue, Thu
         "availabilities": [
@@ -196,6 +206,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MS Orthopedics. Spine surgeon specializing in minimally invasive spine corrections.",
         "role": "Doctor",
+        "consultation_price": 1500,
         "specializations": ["Orthopedics"],
         "availabilities": [
             {"day_of_week": "Friday", "start_time": "09:00", "end_time": "17:00"},
@@ -209,6 +220,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, D-Ortho. Specializes in fracture management and trauma care.",
         "role": "Doctor",
+        "consultation_price": 800,
         "specializations": ["Orthopedics"],
         "availabilities": [
             {"day_of_week": "Monday", "start_time": "08:00", "end_time": "14:00"},
@@ -222,6 +234,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MS Orthopedics. Pediatric orthopedic surgeon focusing on bone deformities in children.",
         "role": "Doctor",
+        "consultation_price": 1000,
         "specializations": ["Orthopedics", "Pediatrics"],
         "availabilities": [
             {"day_of_week": "Thursday", "start_time": "10:00", "end_time": "15:00"},
@@ -236,6 +249,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD OBGYN. High-risk pregnancy specialist and infertility consultant.",
         "role": "Doctor",
+        "consultation_price": 1000,
         "specializations": ["Gynecology"],
         # [SPLIT SHIFT]: Mon, Wed
         "availabilities": [
@@ -254,6 +268,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DGO. Focus on adolescent health, PCOD/PCOS, and menopause management.",
         "role": "Doctor",
+        "consultation_price": 700,
         "specializations": ["Gynecology"],
         "availabilities": [
             {"day_of_week": "Monday", "start_time": "15:00", "end_time": "19:00"},
@@ -267,6 +282,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MS OBGYN. Expert in laparoscopic hysterectomy and fibroid removal.",
         "role": "Doctor",
+        "consultation_price": 1200,
         "specializations": ["Gynecology"],
         "availabilities": [
             {"day_of_week": "Tuesday", "start_time": "10:00", "end_time": "16:00"},
@@ -279,6 +295,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD. IVF specialist and reproductive endocrinologist.",
         "role": "Doctor",
+        "consultation_price": 2000,
         "specializations": ["Gynecology", "Endocrinology"],
         "availabilities": [
             {"day_of_week": "Saturday", "start_time": "09:00", "end_time": "15:00"},
@@ -293,6 +310,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD Pediatrics. Neonatologist and child nutrition expert.",
         "role": "Doctor",
+        "consultation_price": 1000,
         "specializations": ["Pediatrics"],
         # [SPLIT SHIFT]: Mon, Fri
         "availabilities": [
@@ -310,6 +328,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD Pediatrics. Adolescent health specialist.",
         "role": "Doctor",
+        "consultation_price": 800,
         "specializations": ["Pediatrics"],
         "availabilities": [
             {"day_of_week": "Thursday", "start_time": "12:00", "end_time": "18:00"},
@@ -323,6 +342,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DCH. General pediatrician with a friendly approach to vaccination and growth monitoring.",
         "role": "Doctor",
+        "consultation_price": 600,
         "specializations": ["Pediatrics"],
         "availabilities": [
             {"day_of_week": "Monday", "start_time": "16:00", "end_time": "20:00"},
@@ -338,6 +358,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD Dermatology. Clinical dermatologist specializing in acne, eczema, and psoriasis.",
         "role": "Doctor",
+        "consultation_price": 900,
         "specializations": ["Dermatology"],
         # [SPLIT SHIFT]: Wed
         "availabilities": [
@@ -353,6 +374,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DDVL. Aesthetic dermatologist expert in laser treatments and anti-aging.",
         "role": "Doctor",
+        "consultation_price": 1500,
         "specializations": ["Dermatology"],
         "availabilities": [
             {"day_of_week": "Tuesday", "start_time": "11:00", "end_time": "19:00"},
@@ -365,6 +387,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD. Pediatric dermatologist.",
         "role": "Doctor",
+        "consultation_price": 900,
         "specializations": ["Dermatology", "Pediatrics"],
         "availabilities": [
             {"day_of_week": "Saturday", "start_time": "09:00", "end_time": "13:00"},
@@ -379,6 +402,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DM Neurology. Stroke specialist and expert in managing migraines and epilepsy.",
         "role": "Doctor",
+        "consultation_price": 1500,
         "specializations": ["Neurology"],
         # [SPLIT SHIFT]: Mon
         "availabilities": [
@@ -393,6 +417,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MCh Neurosurgery. Spine and brain surgeon.",
         "role": "Doctor",
+        "consultation_price": 2000,
         "specializations": ["Neurology", "Orthopedics"],
         "availabilities": [
             {"day_of_week": "Thursday", "start_time": "14:00", "end_time": "20:00"},
@@ -407,6 +432,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD Psychiatry. Specializes in anxiety, depression, and cognitive behavioral therapy.",
         "role": "Doctor",
+        "consultation_price": 1200,
         "specializations": ["Psychiatry"],
         "availabilities": [
             {"day_of_week": "Monday", "start_time": "15:00", "end_time": "20:00"},
@@ -420,6 +446,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DPM. Child psychiatrist focusing on ADHD and autism spectrum disorders.",
         "role": "Doctor",
+        "consultation_price": 1500,
         "specializations": ["Psychiatry", "Pediatrics"],
         "availabilities": [
             {"day_of_week": "Saturday", "start_time": "10:00", "end_time": "16:00"},
@@ -432,6 +459,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD. Addiction psychiatrist helping patients with de-addiction and rehabilitation.",
         "role": "Doctor",
+        "consultation_price": 1000,
         "specializations": ["Psychiatry"],
         "availabilities": [
             {"day_of_week": "Tuesday", "start_time": "09:00", "end_time": "13:00"},
@@ -446,6 +474,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MS ENT. Specialist in endoscopic sinus surgery and hearing disorders.",
         "role": "Doctor",
+        "consultation_price": 900,
         "specializations": ["ENT (Otorhinolaryngology)"],
         # [SPLIT SHIFT]: Mon, Wed
         "availabilities": [
@@ -461,6 +490,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DLO. Pediatric ENT specialist.",
         "role": "Doctor",
+        "consultation_price": 800,
         "specializations": ["ENT (Otorhinolaryngology)", "Pediatrics"],
         "availabilities": [
             {"day_of_week": "Tuesday", "start_time": "15:00", "end_time": "19:00"},
@@ -473,6 +503,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MS ENT. Head and neck surgeon.",
         "role": "Doctor",
+        "consultation_price": 1200,
         "specializations": ["ENT (Otorhinolaryngology)"],
         "availabilities": [
             {"day_of_week": "Thursday", "start_time": "09:00", "end_time": "14:00"},
@@ -487,6 +518,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MS Ophthalmology. Cataract and Lasik surgeon.",
         "role": "Doctor",
+        "consultation_price": 800,
         "specializations": ["Ophthalmology"],
         "availabilities": [
             {"day_of_week": "Monday", "start_time": "09:00", "end_time": "13:00"},
@@ -502,6 +534,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD. Retina specialist.",
         "role": "Doctor",
+        "consultation_price": 1200,
         "specializations": ["Ophthalmology"],
         "availabilities": [
             {"day_of_week": "Saturday", "start_time": "10:00", "end_time": "15:00"},
@@ -516,6 +549,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DM Gastroenterology. Expert in liver diseases and endoscopy.",
         "role": "Doctor",
+        "consultation_price": 1500,
         "specializations": ["Gastroenterology"],
         # [SPLIT SHIFT]: Mon, Thu
         "availabilities": [
@@ -531,6 +565,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DNB Gastro. Specialist in digestive disorders and IBS.",
         "role": "Doctor",
+        "consultation_price": 1000,
         "specializations": ["Gastroenterology"],
         "availabilities": [
             {"day_of_week": "Tuesday", "start_time": "09:00", "end_time": "13:00"},
@@ -545,6 +580,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD Respiratory Medicine. Asthma and COPD specialist.",
         "role": "Doctor",
+        "consultation_price": 1000,
         "specializations": ["Pulmonology"],
         "availabilities": [
             {"day_of_week": "Monday", "start_time": "14:00", "end_time": "19:00"},
@@ -560,6 +596,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MCh Urology. Kidney stone and prostate specialist.",
         "role": "Doctor",
+        "consultation_price": 1500,
         "specializations": ["Urology"],
         # [SPLIT SHIFT]: Tue, Thu
         "availabilities": [
@@ -575,6 +612,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DNB Urology. Male infertility specialist.",
         "role": "Doctor",
+        "consultation_price": 1200,
         "specializations": ["Urology"],
         "availabilities": [
             {"day_of_week": "Saturday", "start_time": "09:00", "end_time": "14:00"}
@@ -588,6 +626,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DM Endocrinology. Thyroid and Diabetes expert.",
         "role": "Doctor",
+        "consultation_price": 1500,
         "specializations": ["Endocrinology"],
         "availabilities": [
             {"day_of_week": "Monday", "start_time": "09:00", "end_time": "13:00"},
@@ -601,6 +640,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MD. Hormonal imbalance specialist.",
         "role": "Doctor",
+        "consultation_price": 1000,
         "specializations": ["Endocrinology"],
         "availabilities": [
             {"day_of_week": "Tuesday", "start_time": "15:00", "end_time": "19:00"},
@@ -615,6 +655,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, DM Medical Oncology. Chemotherapy specialist.",
         "role": "Doctor",
+        "consultation_price": 1800,
         "specializations": ["Oncology"],
         "availabilities": [
             {"day_of_week": "Monday", "start_time": "10:00", "end_time": "16:00"},
@@ -627,6 +668,7 @@ doctors = [
         "password": "password",
         "description": "MBBS, MCh Surgical Oncology. Cancer surgeon.",
         "role": "Doctor",
+        "consultation_price": 2000,
         "specializations": ["Oncology"],
         "availabilities": [
             {"day_of_week": "Tuesday", "start_time": "09:00", "end_time": "15:00"},
@@ -886,7 +928,7 @@ def create_initial_data():
         user = User(email=d["email"], password=hash_password(d["password"]))
         doctor_role = Role.query.filter_by(name="Doctor").first()
         user.roles.append(doctor_role)
-        doctor = DoctorProfile(name=d["name"], description=d["description"], user=user)
+        doctor = DoctorProfile(name=d["name"], description=d["description"], consultation_price=d["consultation_price"], user=user)
         for s in d["specializations"]:
             doctor.specializations.append(Specialization.query.filter_by(name=s).first())
         for a in d["availabilities"]:

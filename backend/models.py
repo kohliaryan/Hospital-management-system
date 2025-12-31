@@ -86,6 +86,11 @@ class DoctorProfile(db.Model):
         backref=db.backref("doctor_profile", uselist=False)
     )
 
+    consultation_price = db.Column(
+        db.Integer,
+        nullable=False
+    )
+
     specializations = db.relationship(
         "Specialization",
         secondary=doctor_specializations,
@@ -133,6 +138,11 @@ class Appointment(db.Model):
         nullable=False
     )
 
+    price = db.Column(
+        db.Integer,
+        nullable=False
+    )
+    
     doctor = db.relationship("DoctorProfile", backref="appointments")
     patient = db.relationship("PatientProfile", backref="appointments")
 

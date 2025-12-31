@@ -2,7 +2,7 @@ from datetime import datetime
 from flask import current_app as app, jsonify, request
 from marshmallow import ValidationError
 from flask_security.utils import hash_password
-from flask_security import roles_required, roles_accepted
+from flask_security import roles_required
 from schema import AddDoctorSchema, RegisterSchema
 from models import DoctorAvailability, DoctorProfile, PatientProfile, Role, Specialization, User, db
 
@@ -39,7 +39,7 @@ def add_doctor():
         return jsonify(err.messages), 400
 
     user = User(email=data["email"], password=hash_password(data["password"]))
-    doctor = DoctorProfile(name=data["name"], description=data.get("description", ""), user=user)
+    doctor = DoctorProfile(name=data["name"], description=data.get("description", ""),consultation_price=data["consultation_price"], user=user)
 
     for s in data.get("specializations"):
         doctor.specializations.append(Specialization.query.filter_by(name=s).first())
@@ -61,6 +61,7 @@ def doctors():
         d = {}
         d["name"] = doctor.name
         d["description"] = doctor.description
+        d["consultation_price"] = doctor.consultation_price
         d["specializations"] = []
         for s in doctor.specializations:
             d["specializations"].append(s.name)
@@ -77,3 +78,8 @@ def patients():
         p["gender"] = patient.gender
         patients.append(p)
     return patients
+
+@app.post("/api/book")
+@roles_required("Patient")
+def book():
+    return "Hello Patient!"

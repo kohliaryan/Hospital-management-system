@@ -91,3 +91,60 @@ class DoctorProfile(db.Model):
         secondary=doctor_specializations,
         backref=db.backref("doctors", lazy="dynamic")
     )
+
+class DoctorAvailability(db.Model):
+    __tablename__ = "doctor_availability"
+
+    id = db.Column(db.Integer, primary_key=True)
+    doctor_id = db.Column(db.Integer, db.ForeignKey("doctor_profile.id"), nullable=False)
+    day_of_week = db.Column(db.String(10), nullable=False)
+    start_time = db.Column(db.Time, nullable=False)
+    end_time = db.Column(db.Time, nullable=False)
+
+    doctor = db.relationship("DoctorProfile", backref="availabilities")
+
+class Appointment(db.Model):
+    __tablename__ = "appointment"
+    
+    id = db.Column(
+        db.Integer, 
+        primary_key=True)
+
+    doctor_id = db.Column(
+        db.Integer, 
+        db.ForeignKey("doctor_profile.id"), 
+        nullable=False
+        )
+
+    patient_id = db.Column(
+        db.Integer,
+        db.ForeignKey("patient_profile.id"), 
+        nullable=False)
+
+    appointment_datetime = db.Column(
+        db.DateTime,
+        nullable=False,
+        index=True
+    )
+
+    status = db.Column(
+        db.String(10),
+        default="scheduled",
+        nullable=False
+    )
+
+    doctor = db.relationship("DoctorProfile", backref="appointments")
+    patient = db.relationship("PatientProfile", backref="appointments")
+
+class PatientProfile(db.Model):
+    __tablename__ = "patient_profile"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    gender = db.Column(db.String(10), nullable=False)
+
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False, unique=True, index=True)
+
+    user = db.relationship("User", backref=db.backref("patient_profile", uselist=False))
+

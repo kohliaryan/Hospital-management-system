@@ -901,5 +901,6 @@ def create_initial_data():
             continue
         p_user = User(email=p["email"], password=hash_password(p["password"]))
         patient = PatientProfile(name=p["name"], gender=p["gender"], age=p["age"], user=p_user)
+        p_user.roles.append(Role.query.filter_by(name="Patient").first())
         db.session.add_all([p_user, patient])
     db.session.commit()

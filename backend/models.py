@@ -1,3 +1,4 @@
+from datetime import datetime
 import uuid
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import UserMixin, RoleMixin
@@ -158,3 +159,23 @@ class PatientProfile(db.Model):
 
     user = db.relationship("User", backref=db.backref("patient_profile", uselist=False))
 
+class MedicalRecord(db.Model):
+    __tablename__ = "medical_record"
+    id = db.Column(db.Integer, primary_key=True)
+    appointment_id = db.Column(
+        db.Integer, 
+        db.ForeignKey("appointment.id"), 
+        nullable=False, 
+        unique=True 
+    )
+    patient_id = db.Column(db.Integer, db.ForeignKey("patient_profile.id"), nullable=False)
+
+    symptoms = db.Column(db.Text, nullable=False)
+    diagnosis = db.Column(db.Text, nullable=False)
+    treatment = db.Column(db.Text, nullable=False)
+    prescription = db.Column(db.Text)
+    
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    appointment = db.relationship("Appointment", backref=db.backref("medical_record", uselist=False))
+    patient = db.relationship("PatientProfile", backref="history")

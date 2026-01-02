@@ -144,3 +144,28 @@ def book():
     db.session.commit()
 
     return jsonify({"msg": "Appointment Scheduled"}), 201
+
+
+@app.get("/api/appointments")
+@roles_required("Doctor")
+def appointments():
+    doctor = current_user.doctor_profile
+    
+    appointments = Appointment.query.filter_by(
+        doctor_id=doctor.id, 
+        status="scheduled"
+    ).order_by(Appointment.appointment_datetime.asc()).all()
+
+    output = []
+
+    for appointment in appointments:
+        a = {}
+        a["id"] = appointment.id
+        a["name"] = appointment.patient.name
+        a["age"] = appointment.patient.age
+        a["gender"] = appointment.patient.gender
+        a["date"] = appointment.appointment_datetime.isoformat()
+        
+        output.append(a)
+
+    return jsonify(output)

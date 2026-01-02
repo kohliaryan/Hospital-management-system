@@ -3,7 +3,7 @@ from flask import current_app as app, jsonify, request
 from flask_login import current_user
 from marshmallow import ValidationError
 from flask_security.utils import hash_password
-from flask_security import roles_required
+from flask_security import roles_required, roles_accepted
 from schema import AddDoctorSchema, BookSchema, DignosisSchema, RegisterSchema
 from models import Appointment, DoctorAvailability, DoctorProfile, MedicalRecord, PatientProfile, Role, Specialization, User, db
 
@@ -200,3 +200,29 @@ def complete_appointment(id):
     db.session.add(dignosis)
     db.session.commit()
     return jsonify({"msg": "Marked as completed!"})
+
+@app.post("/api/appointment/<int:id>/cancel")
+@roles_accepted("Doctor", "Patient") 
+def cancel_appointment(id):
+    appt = Appointment.query.get_or_404(id)
+
+    if appt.status != "scheduled":
+        return jsonify({"msg": "Cannot cancel this appointment (It is already completed or cancelled)"}), 400
+
+    is_authorized = False
+
+    if current_user.has_role("Doctor"):
+        if current_user.doctor_profile and appt.doctor_id == current_user.doctor_profile.id:
+            is_authorized = True
+
+    elif current_user.has_role("Patient"):
+        if current_user.patient_profile and appt.patient_id == current_user.patient_profile.id:
+            is_authorized = True
+
+    if not is_authorized:
+        return jsonify({"msg": "Unauthorized. You do not own this appointment."}), 403
+
+    appt.status = "cancelled"
+    db.session.commit()
+
+    return jsonify({"msg": "Appointment cancelled successfully"}), 200

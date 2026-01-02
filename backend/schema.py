@@ -26,3 +26,9 @@ def validate_future_date(value):
 class BookSchema(Schema):
     doctor_id = fields.Integer(required=True)
     date_time = fields.DateTime(required=True, validate=validate_future_date)
+
+class DignosisSchema(Schema):
+    symptoms = fields.Str(required=True)
+    diagnosis = fields.Str(required=True)
+    treatment = fields.Str(required=True)
+    prescription = fields.Str()

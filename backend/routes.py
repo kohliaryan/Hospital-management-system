@@ -4,8 +4,8 @@ from flask_login import current_user
 from marshmallow import ValidationError
 from flask_security.utils import hash_password
 from flask_security import roles_required
-from schema import AddDoctorSchema, BookSchema, RegisterSchema
-from models import Appointment, DoctorAvailability, DoctorProfile, PatientProfile, Role, Specialization, User, db
+from schema import AddDoctorSchema, BookSchema, DignosisSchema, RegisterSchema
+from models import Appointment, DoctorAvailability, DoctorProfile, MedicalRecord, PatientProfile, Role, Specialization, User, db
 
 @app.get('/')
 def hello():
@@ -13,7 +13,7 @@ def hello():
 
 @app.post("/api/register")
 def register():
-    data = request.get_json()
+    data = request.get_json(silent=True)
     try:
         RegisterSchema().load(data=data)
     except ValidationError as err:
@@ -33,7 +33,7 @@ def register():
 @app.post("/api/doctor")
 @roles_required("Admin")
 def add_doctor():
-    data = request.get_json()
+    data = request.get_json(silent=True)
     try:
         AddDoctorSchema().load(data=data)
     except ValidationError as err:
@@ -86,7 +86,7 @@ def patients():
 @app.post("/api/book")
 @roles_required("Patient")
 def book():
-    data = request.get_json()
+    data = request.get_json(silent=True)
     
     try:
         BookSchema().load(data=data)
@@ -145,7 +145,6 @@ def book():
 
     return jsonify({"msg": "Appointment Scheduled"}), 201
 
-
 @app.get("/api/appointments")
 @roles_required("Doctor")
 def appointments():
@@ -169,3 +168,35 @@ def appointments():
         output.append(a)
 
     return jsonify(output)
+
+@app.post("/api/appointment/<int:id>/complete")
+@roles_required("Doctor")
+def complete_appointment(id):
+    appointment = Appointment.query.get(id)
+    if not appointment:
+        return jsonify({"msg": "Invalid Appointment Id"}), 400
+
+    if current_user.doctor_profile != appointment.doctor:
+        return jsonify({"msg": "Not Permitted"}), 401
+    
+    data = request.get_json(silent=True)
+
+    try:
+        DignosisSchema().load(data)
+    except ValidationError as err:
+        return jsonify(err.messages), 400
+    
+    appointment.status = "completed"
+
+    dignosis = MedicalRecord(
+        symptoms = data["symptoms"],
+        diagnosis = data["diagnosis"],
+        treatment = data["treatment"],
+        prescription=data.get("prescription"),
+        appointment = appointment,
+        patient_id = appointment.patient_id
+    )
+    
+    db.session.add(dignosis)
+    db.session.commit()
+    return jsonify({"msg": "Marked as completed!"})

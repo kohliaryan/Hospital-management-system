@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import api from '../api/axios';
 import { useNavigate } from 'react-router-dom';
-import { Container, TextField, Button, Typography, Box, Paper, Alert } from '@mui/material';
+// Added 'Link' to the imports
+import { Container, TextField, Button, Typography, Box, Paper, Alert, Link } from '@mui/material';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -9,7 +10,7 @@ const Login = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-const handleLogin = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         setError('');
 
@@ -19,14 +20,7 @@ const handleLogin = async (e) => {
                 password: password
             });
 
-            // 1. Log the response to verify (Optional)
             console.log("Login Successful:", response.data);
-
-            // 2. YOU DO NOT NEED TO SAVE A TOKEN.
-            // The browser has already saved the session cookie because
-            // you set 'supports_credentials=True' in Flask.
-            
-            // 3. Just Redirect
             navigate('/dashboard');
 
         } catch (err) {
@@ -83,6 +77,28 @@ const handleLogin = async (e) => {
                             Sign In
                         </Button>
                     </form>
+
+                    {/* --- NEW SECTION: Register Link --- */}
+                    <Box sx={{ mt: 3, textAlign: 'center' }}>
+                        <Typography variant="body2" color="text.secondary">
+                            New to AKHS? {' '}
+                            <Link 
+                                component="button" 
+                                variant="body2" 
+                                onClick={() => navigate('/register')}
+                                sx={{ 
+                                    fontWeight: 'bold', 
+                                    cursor: 'pointer',
+                                    textDecoration: 'none',
+                                    '&:hover': { textDecoration: 'underline' } 
+                                }}
+                            >
+                                Register Here
+                            </Link>
+                        </Typography>
+                    </Box>
+                    {/* ---------------------------------- */}
+
                 </Paper>
             </Box>
         </Container>

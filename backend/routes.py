@@ -226,3 +226,36 @@ def cancel_appointment(id):
     db.session.commit()
 
     return jsonify({"msg": "Appointment cancelled successfully"}), 200
+
+@app.get("/api/patient/dashboard")
+@roles_required("Patient")
+def patient_dashboard():
+    if not current_user.patient_profile:
+        return jsonify({"msg": "Profile incomplete"}), 400
+
+    upcoming_appointment = Appointment.query.filter(
+        Appointment.patient_id == current_user.patient_profile.id,
+        Appointment.appointment_datetime >= datetime.now(),
+        Appointment.status == "scheduled"
+    ).order_by(Appointment.appointment_datetime.asc()).first()
+
+    past_appointments = Appointment.query.filter(
+        Appointment.patient_id == current_user.patient_profile.id,
+        Appointment.appointment_datetime < datetime.now()
+    ).order_by(Appointment.appointment_datetime.desc()).limit(3).all()
+
+    return jsonify({
+        "upcoming_appointment": {
+            "id": upcoming_appointment.id,
+            "date": str(upcoming_appointment.appointment_datetime.date()), 
+            "time": str(upcoming_appointment.appointment_datetime.time()),
+            "doctor_name": upcoming_appointment.doctor.name
+        } if upcoming_appointment else None,
+        
+        "history": [{
+            "id": h.id,
+            "date": str(h.appointment_datetime.date()), 
+            "doctor": h.doctor.name,
+            "status": h.status
+        } for h in past_appointments]
+    })

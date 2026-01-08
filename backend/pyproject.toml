@@ -11,6 +11,7 @@ dependencies = [
     "click==8.3.1",
     "dnspython==2.8.0",
     "email-validator==2.3.0",
+    "fastapi>=0.128.0",
     "flask==3.1.2",
     "flask-cors==6.0.2",
     "flask-login==0.6.3",
@@ -28,6 +29,7 @@ dependencies = [
     "marshmallow==4.1.2",
     "sqlalchemy==2.0.45",
     "typing-extensions==4.15.0",
+    "uvicorn>=0.40.0",
     "werkzeug==3.1.4",
     "wtforms==3.2.1",
 ]

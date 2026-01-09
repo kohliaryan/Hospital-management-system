@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "aiosqlite>=0.22.1",
     "backports-datetime-fromisoformat==2.0.3",
     "bcrypt==5.0.0",
     "blinker==1.9.0",
@@ -27,6 +28,8 @@ dependencies = [
     "libpass==1.9.3",
     "markupsafe==3.0.3",
     "marshmallow==4.1.2",
+    "passlib[bcrypt]>=1.7.4",
+    "pydantic>=2.12.5",
     "sqlalchemy==2.0.45",
     "typing-extensions==4.15.0",
     "uvicorn>=0.40.0",

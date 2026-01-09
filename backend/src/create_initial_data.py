@@ -1,4 +1,4 @@
-from models import DoctorAvailability, DoctorProfile, PatientProfile, Role, Specialization, User, db
+from backend.src.models import DoctorAvailability, DoctorProfile, PatientProfile, Role, Specialization, User, db
 from flask_security.utils import hash_password
 from datetime import datetime
 roles = ["Admin", "Doctor", "Patient"]
